@@ -21,6 +21,7 @@ class Sphere: public Shape{
 
     Sphere();
     Sphere(std::string const& name, Color const& color, glm::vec3 const& center, float const& radius);
+    ~Sphere();
 
     private:
     glm::vec3 center_;

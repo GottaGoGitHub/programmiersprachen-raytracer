@@ -8,6 +8,10 @@ Shape::Shape(std::string const& name, Color const& color):
     name_{name},
     color_{color}{}
 
+Shape::~Shape(){
+    std::cout << "Shape destructor" << std::endl;
+}
+
 std::ostream& Shape::print(std::ostream& os) const{
     return os << "Name: " << name_ << "Farbe: " << color_ << std::endl;
 }

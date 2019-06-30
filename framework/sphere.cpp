@@ -13,6 +13,10 @@ Sphere::Sphere(std::string const& name, Color const& color, glm::vec3 const& cen
     center_{center},
     radius_{radius}{}
 
+Sphere::~Sphere(){
+    std::cout << "Sphere destructor" << std::endl;
+}    
+
 std::ostream& Sphere::print(std::ostream& os) const
 {
     return os << "Name: " << name_ << " Center: " << center_.x << " " << center_.y << " " << center_.z 

@@ -13,6 +13,8 @@ class Shape{
     virtual float volume(void) = 0;
     virtual std::ostream& print(std::ostream& os) const;
 
+    virtual ~Shape();
+
     protected:
     std::string name_;
     Color color_;

@@ -82,6 +82,23 @@ TEST_CASE("custom_intersect_test", "[intersect]"){
   }
 }
 
+TEST_CASE("Aufgabe 5.8", "Shape") {
+    Color red{1, 0, 0};
+    glm::vec3 position{0.0f, 0.0f, 0.0f};
+    Sphere *s1 = new Sphere{"die1", red, position, 1.2f};
+    Shape *s2 = new Sphere{"die2", red ,position, 1.2f};
+    s1->print(std::cout);
+    s2->print(std::cout);
+    std::cout << "--------------------------" << std::endl;
+    delete s1;
+    std::cout << "--------------------------" << std::endl;
+    delete s2;
+    std::cout << "--------------------------" << std::endl;
+}
+
+/* entfernt man das virtual von der basisklasse, wird beim zweiten aufruf nur der Shape
+   Destruktor und nicht der Sphere Destruktor verwendet */
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

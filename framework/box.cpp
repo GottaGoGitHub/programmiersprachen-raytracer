@@ -15,6 +15,10 @@ Box::Box(std::string const& name, Color const& color, glm::vec3 const& min, glm:
     min_{min},
     max_{max}{}
 
+Box::~Box(){
+    std::cout << "Box destructor" << std::endl;    
+}    
+
 std::ostream& Box::print(std::ostream& os) const
 {
    return std::cout << "Name: " << name_ 
