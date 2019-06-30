@@ -10,6 +10,7 @@ class Box: public Shape{
     public:
     virtual float area() override;
     virtual float volume() override;
+    virtual std::ostream& print(std::ostream& os)const override;
 
     Box();
     Box(std::string const& name, Color const& color, glm::vec3 const& min, glm::vec3 const& max);
