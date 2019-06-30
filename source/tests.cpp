@@ -86,3 +86,13 @@ int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
 }
+
+/*
+Bei der statischen Typisierung wird im Gegensatz zur dynamischen Typisierung der Datentyp
+von Variablen und anderen Programmbausteinen schon während der Kompilierung festgelegt.
+Dies kann durch Typinferenz oder durch explizite Deklaration geschehen. 
+Statische Typisierung kann durch starke Typisierung erweitert werden.
+
+Bei der dynamischen Typisierung finden Typ-Prüfungen (etwa des Datentyps von Variablen) 
+vorrangig zur Laufzeit eines Programms statt.
+ */
