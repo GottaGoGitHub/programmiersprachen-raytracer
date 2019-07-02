@@ -8,8 +8,7 @@ Sphere::Sphere():
     radius_{0}{}
 
 Sphere::Sphere(std::string const& name, Color const& color, glm::vec3 const& center, float const& radius):
-    name_{name},
-    color_{color},
+    Shape{name, color},
     center_{center},
     radius_{radius}{}
 
@@ -19,9 +18,13 @@ Sphere::~Sphere(){
 
 std::ostream& Sphere::print(std::ostream& os) const
 {
-    return os << "Name: " << name_ << " Center: " << center_.x << " " << center_.y << " " << center_.z 
-    << " Radius: " << radius_ 
-    << " Farbe: " << color_.r << " " << color_.g << " " << color_.b << std::endl;
+    Shape::print(os);
+    return os << " Center: " << center_.x << " " << center_.y << " " << center_.z 
+    << " Radius: " << radius_ << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, Sphere const& s){
+    return s.print(os);
 }
 
 HitPoint Sphere::intersect(Ray ray){

@@ -83,11 +83,14 @@ TEST_CASE("custom_intersect_test", "[intersect]"){
 }
 
 TEST_CASE("Aufgabe 5.8", "Shape") {
-    Color red{1, 0, 0};
-    glm::vec3 position{0.0f, 0.0f, 0.0f};
+    Color red{255, 0, 0};
+    glm::vec3 position{0.0f, 3.4f, 0.0f};
     Sphere *s1 = new Sphere{"die1", red, position, 1.2f};
     Shape *s2 = new Sphere{"die2", red ,position, 1.2f};
     s1->print(std::cout);
+    std::cout << "--------------------------" << std::endl;
+    std::cout << *s1 << std::endl;
+    std::cout << "--------------------------" << std::endl;
     s2->print(std::cout);
     std::cout << "--------------------------" << std::endl;
     delete s1;

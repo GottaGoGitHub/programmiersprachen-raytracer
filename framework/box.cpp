@@ -21,12 +21,15 @@ Box::~Box(){
 
 std::ostream& Box::print(std::ostream& os) const
 {
-   return std::cout << "Name: " << name_ 
+   Shape::print(os);
+   return std::cout 
    << " Min: " << min_.x << " " << min_.y << " " << min_.z 
-   << " Max: " << max_.x << " " << max_.y << " " << max_.z 
-   << " Farbe: " << color_.r << " " << color_.g << " " << color_.b << std::endl;
+   << " Max: " << max_.x << " " << max_.y << " " << max_.z << std::endl;
 }    
 
+std::ostream& operator<<(std::ostream& os, Box const& b){
+    return b.print(os);
+}
 
 float Box::volume(){
     float a = (min_.x - max_.x) * -1;
