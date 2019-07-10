@@ -7,12 +7,13 @@
 #include "shape.hpp"
 #include "box.hpp"
 #include "sphere.hpp"
+#include "material.hpp"
 
 TEST_CASE("sphere"){
   glm::vec3 center{20, 20, 20};
   float radius = 3;
-  Color color{0.2f, 0.2f, 0.8f};
-  Sphere sphere{"Karsten", color, center, radius};
+  Material mat{};
+  Sphere sphere{"Karsten", mat, center, radius};
 
   REQUIRE(sphere.area() == Approx(113.09734f));
   REQUIRE(sphere.volume() == Approx(113.09451f));
@@ -23,8 +24,8 @@ TEST_CASE("sphere"){
 TEST_CASE("box"){
   glm::vec3 min{0,0,0};
   glm::vec3 max{5,5,5};
-  Color color(0.2f, 0.2f, 0.8f);
-  Box box{"Horst", color, min, max};
+  Material mat{};
+  Box box{"Horst", mat, min, max};
 
   REQUIRE(box.area() == 150);
   REQUIRE(box.volume() == 125);
@@ -48,18 +49,18 @@ TEST_CASE("intersect_ray_sphere" , "[intersect]"){
 }
 
 TEST_CASE("custom_intersect_test", "[intersect]"){
-  Color color{0.9f, 0.0f, 0.3f};
+  Material mat{};
   glm::vec3 center1{10, 3, 1};
   Ray ray;
 
-  Sphere sphere{"Inge", color, center1, 1.0f};
+  Sphere sphere{"Inge", mat, center1, 1.0f};
   HitPoint hitpoint1 = sphere.intersect(ray);
 
   if(hitpoint1.gotHit == true)
   {
     std::cout << "Ray schneidet die Kugel" << std::endl;
     std::cout << " Name: " << hitpoint1.name 
-              << " Color: " << hitpoint1.color 
+              //<< " Color: " << hitpoint1.color 
               << " Distanz: " << hitpoint1.distance << std::endl;
   }
   else{
@@ -68,13 +69,14 @@ TEST_CASE("custom_intersect_test", "[intersect]"){
 
   glm::vec3 center2{5, 5 ,-5};
 
-  Sphere sphere2{"Karl", color, center2, 10.0f};
+  Sphere sphere2{"Karl", mat, center2, 10.0f};
   HitPoint hitpoint2 = sphere2.intersect(ray);
 
   if(hitpoint2.gotHit == true)
   {
     std::cout << "Ray schneidet die Kugel" << std::endl;
-    std::cout << " Name: " << hitpoint2.name << " Color: " << hitpoint2.color 
+    std::cout << " Name: " << hitpoint2.name 
+              //<< " Color: " << hitpoint2.color 
               << " Distanz: " << hitpoint2.distance << std::endl;
   }
   else{
@@ -83,10 +85,10 @@ TEST_CASE("custom_intersect_test", "[intersect]"){
 }
 
 TEST_CASE("Aufgabe 5.8", "Shape") {
-    Color red{255, 0, 0};
+    Material mat;;
     glm::vec3 position{0.0f, 3.4f, 0.0f};
-    Sphere *s1 = new Sphere{"die1", red, position, 1.2f};
-    Shape *s2 = new Sphere{"die2", red ,position, 1.2f};
+    Sphere *s1 = new Sphere{"die1", mat, position, 1.2f};
+    Shape *s2 = new Sphere{"die2", mat ,position, 1.2f};
     s1->print(std::cout);
     std::cout << "--------------------------" << std::endl;
     std::cout << *s1 << std::endl;

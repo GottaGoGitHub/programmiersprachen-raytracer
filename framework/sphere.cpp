@@ -7,8 +7,8 @@ Sphere::Sphere():
     center_{0,0,0},
     radius_{0}{}
 
-Sphere::Sphere(std::string const& name, Color const& color, glm::vec3 const& center, float const& radius):
-    Shape{name, color},
+Sphere::Sphere(std::string const& name, Material const& mat, glm::vec3 const& center, float const& radius):
+    Shape{name, mat},
     center_{center},
     radius_{radius}{}
 
@@ -36,7 +36,7 @@ HitPoint Sphere::intersect(Ray ray){
 
     hitpoint.gotHit = glm::intersectRaySphere(ray.origin, norm.direction, center_, radius_ * radius_, distance);
     hitpoint.name = name_;
-    hitpoint.color = color_;
+    //hitpoint.color = color_;
     hitpoint.distance = distance;
 
     return hitpoint;

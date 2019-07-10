@@ -8,8 +8,6 @@
 #include "shape.hpp"
 #include "color.hpp"
 #include "hitpoint.hpp"
-#include "ray.hpp"
-
 
 class Sphere: public Shape{
     public:
@@ -17,16 +15,16 @@ class Sphere: public Shape{
     virtual float volume() override;
     virtual std::ostream& print(std::ostream& os)const override;
 
-    HitPoint intersect(Ray ray);
+    virtual HitPoint intersect(Ray ray) override;
 
     Sphere();
-    Sphere(std::string const& name, Color const& color, glm::vec3 const& center, float const& radius);
+    Sphere(std::string const& name, Material const& mat, glm::vec3 const& center, float const& radius);
     ~Sphere();
 
     private:
     glm::vec3 center_;
     float radius_;
-    Color color_;
+    Material material_;
     std::string name_;
 };
 
