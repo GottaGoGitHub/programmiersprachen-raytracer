@@ -48,6 +48,21 @@ TEST_CASE("intersect_ray_sphere" , "[intersect]"){
   REQUIRE (distance == Approx (4.0f));
 }
 
+TEST_CASE("intersect_ray_box", "[intersect]"){
+  Box box{"Kai_Uwe", Material{}, glm::vec3{2,2,2}, glm::vec3{10,10,10}};
+
+  Ray ray1{glm::vec3{0.0f,0.0f,0.0f}, glm::vec3{1.0f, 1.0f, 1.0f}};
+  Ray ray2{glm::vec3{0.0f,0.0f,0.0f}, glm::vec3{0.0f, -1.0f, 0.0f}};
+
+  HitPoint hit = box.intersect(ray1);
+  HitPoint nohit = box.intersect(ray2); 
+
+  REQUIRE(hit.gotHit == true);
+  REQUIRE(hit.name == "Kai_Uwe");
+  REQUIRE(nohit.gotHit == false);
+  REQUIRE(nohit.name == "");
+}
+
 TEST_CASE("custom_intersect_test", "[intersect]"){
   Material mat{};
   glm::vec3 center1{10, 3, 1};
